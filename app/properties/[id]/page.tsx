@@ -1,15 +1,14 @@
 import { FC } from "react";
 
 type PropertyPageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 const PropertyPage: FC<PropertyPageProps> = async ({ params }) => {
+  const { id } = await params;
   return (
     <div>
-      <h1>Property Details{params.id}</h1>
+      <h1>Property Details{id}</h1>
     </div>
   );
 };
