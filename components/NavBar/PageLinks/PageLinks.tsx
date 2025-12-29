@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { FC, Fragment } from "react";
 import cx from "classnames";
-import { Divider } from "@/components/Divider/Divider";
+import { Divider } from "@/components/NavBar/Divider/Divider";
 import { usePathname } from "next/navigation";
 
 type Props = {

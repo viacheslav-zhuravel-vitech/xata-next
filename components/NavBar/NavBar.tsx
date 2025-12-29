@@ -5,7 +5,7 @@ import logo from "@/assets/images/logo.png";
 import MobileMenu from "@/components/NavBar/MobleMenu/MobileMenu";
 import { PageLinks } from "@/components/NavBar/PageLinks/PageLinks";
 import { UserMenu } from "@/components/NavBar/UserMenu/UserMenu";
-import { Divider } from "@/components/Divider/Divider";
+import { Divider } from "@/components/NavBar/Divider/Divider";
 
 type Props = {
   params?: {

@@ -23,7 +23,7 @@ const MobileMenu: FC = () => {
         Menu
       </button>
       {isOpen && (
-        <div className="w-full flex flex-col justify-center absolute top-18 bg-green-50 left-0 text-color-white">
+        <div className="w-full flex flex-col justify-center absolute top-18 z-50 bg-green-50 left-0 text-color-white shadow-xl">
           <PageLinks
             className="h-12"
             afterRedirectCallbackAction={afterRedirectCallbackAction}
