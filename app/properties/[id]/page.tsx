@@ -22,7 +22,7 @@ const PropertyPage: FC<PropertyPageProps> = async ({ params }) => {
   const { id } = await params;
   await connectDB();
   const property: PropertyType = await Properties.findById(id).lean();
-  console.log(property);
+
   return (
     <div className="p-6">
       <div className="flex justify-between items-center">
@@ -49,12 +49,15 @@ const PropertyPage: FC<PropertyPageProps> = async ({ params }) => {
       </div>
       <div className="p-4">
         <div className="flex justify-between text-gray-600">
-          <div>{`Type: ${property.type}`}</div>
+          <div>
+            <span className="font-bold">Type: </span>
+            {property.type}
+          </div>
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <span>Location:</span>
+            <span className="font-bold">Location:</span>
             <FaMapMarker className="text-green-600 mt-1" />
             <span className="text-green-600">
-              {property.location.city} {property.location.state}
+              {`${property.location.street}, ${property.location.city}, ${property.location.state}, ${property.location.zipcode}`}
             </span>
           </div>
         </div>
@@ -82,6 +85,27 @@ const PropertyPage: FC<PropertyPageProps> = async ({ params }) => {
           </p>
         </div>
       </div>
+      <div className="p-4 mb-4 bg-gray-200 shadow-md text-gray-600">
+        <h3 className="font-bold">Rates & Options</h3>
+        <ul className="grid grid-cols-2 md:grid-cols-3">
+          {Object.entries(property.rates).map(([key, value], index) => (
+            <li key={index}>
+              <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span> {" - "}
+              <span className="text-green-600 font-bold">${value}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      {property?.amenities?.length > 0 && (
+        <div className="p-4 bg-green-50 shadow-md text-gray-600">
+          <h3 className="font-bold">Amenities</h3>
+          <ul className="grid grid-cols-2 md:grid-cols-3">
+            {property.amenities.map((el, index) => (
+              <li key={index}>{el}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

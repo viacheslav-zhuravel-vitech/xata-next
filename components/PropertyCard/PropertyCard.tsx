@@ -26,9 +26,12 @@ export type PropertyType = {
   location: {
     city: string;
     state: string;
+    street: string;
+    zipcode: string;
   };
   images: Array<string>;
   rates: rateTypes;
+  amenities: Array<string>;
 };
 
 type PropertyCardProps = {
